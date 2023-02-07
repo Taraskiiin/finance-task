@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 
 import useSocketConnection from './hooks/useSocketConnection';
 
-import FinanceTable from './components/Table';
+import FinanceTable from './components/FinanceTable';
 
 const Root = styled(Container)(({ theme }) => ({
 	padding: theme.spacing(10),
