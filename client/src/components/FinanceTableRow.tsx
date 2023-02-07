@@ -30,6 +30,9 @@ export default function FinanceTableRow({
 				},
 			}}
 		>
+			<TableCell component='th' scope='row'>
+				{ticker}
+			</TableCell>
 			<TableCellLogo ticker={ticker} />
 			<TableCell align='right'>{exchange}</TableCell>
 			<TableCell align='right'>{price}</TableCell>

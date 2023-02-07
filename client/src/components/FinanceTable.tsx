@@ -20,6 +20,7 @@ export default function FinanceTable() {
 				<TableHead>
 					<TableRow>
 						<TableCell>Ticker</TableCell>
+						<TableCell>Logo</TableCell>
 						<TableCell align='right'>Exchange</TableCell>
 						<TableCell align='right'>Price</TableCell>
 						<TableCell align='right'>Change</TableCell>
