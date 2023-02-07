@@ -13,6 +13,7 @@ import FinanceTableRow from './FinanceTableRow';
 
 export default function FinanceTable() {
 	const data = useAppSelector<IListOfTickersItem[]>((state) => state.list);
+
 	return (
 		<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 650 }} aria-label='simple table'>
@@ -33,7 +34,7 @@ export default function FinanceTable() {
 				<TableBody>
 					{data.length > 0 &&
 						data.map((el: IListOfTickersItem) => (
-							<FinanceTableRow data={el} />
+							<FinanceTableRow data={el} key={el.ticker} />
 						))}
 				</TableBody>
 			</Table>
