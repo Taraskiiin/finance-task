@@ -1,58 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { styled } from '@mui/material/styles';
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
+
+import { useAppSelector } from './hooks/reduxHooks';
+import useSocketConnection from './hooks/useSocketConnection';
+import IListOfTickersItem from './interfaces';
+
+import CardElement from './components/CardElement';
+
+const Root = styled(Container)(({ theme }) => ({
+	padding: theme.spacing(10),
+	textAlign: 'center',
+}));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+	useSocketConnection();
+	const data = useAppSelector<any>((state) => state.list);
+	return (
+		<Root maxWidth='sm'>
+			<Paper elevation={3}>
+				{data.length > 0 &&
+					data.map((el: IListOfTickersItem) => (
+						<CardElement data={el} />
+					))}
+			</Paper>
+		</Root>
+	);
 }
 
 export default App;
