@@ -16,7 +16,7 @@ export default function FinanceTableRow({
 		change,
 		change_percent,
 		dividend,
-		yield,
+		income,
 		last_trade_time,
 	} = data;
 	return (
@@ -35,7 +35,7 @@ export default function FinanceTableRow({
 			<TableCell align='right'>{change}</TableCell>
 			<TableCell align='right'>{change_percent}</TableCell>
 			<TableCell align='right'>{dividend}</TableCell>
-			<TableCell align='right'>{yield}</TableCell>
+			<TableCell align='right'>{income}</TableCell>
 			<TableCell align='right'>{last_trade_time}</TableCell>
 		</TableRow>
 	);

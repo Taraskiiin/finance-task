@@ -24,7 +24,7 @@ export default function FinanceTable() {
 						<TableCell align='right'>Change</TableCell>
 						<TableCell align='right'>Change&nbsp;percent</TableCell>
 						<TableCell align='right'>Dividend</TableCell>
-						<TableCell align='right'>Yield</TableCell>
+						<TableCell align='right'>Income</TableCell>
 						<TableCell align='right'>
 							Last&nbsp;trade&nbsp;time
 						</TableCell>

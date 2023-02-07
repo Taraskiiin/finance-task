@@ -5,6 +5,6 @@ export default interface IListOfTickersItem {
 	change: number;
 	change_percent: number;
 	dividend: number;
-	yield: number;
+	income: number;
 	last_trade_time: string;
 }
