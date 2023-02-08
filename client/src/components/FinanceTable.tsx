@@ -11,25 +11,35 @@ import { useAppSelector } from '../hooks/reduxHooks';
 import IListOfTickersItem from '../interfaces';
 import FinanceTableRow from './FinanceTableRow';
 
+const tableHeadList = [
+	'Logo',
+	'Ticker',
+	'Exchange',
+	'Price',
+	'Change',
+	'Change %',
+	'Dividend',
+	'Income',
+	'Last trade time',
+];
+
 export default function FinanceTable() {
 	const data = useAppSelector<IListOfTickersItem[]>((state) => state.list);
 
 	return (
 		<TableContainer component={Paper}>
-			<Table sx={{ minWidth: 650 }} aria-label='simple table'>
+			<Table sx={{ minWidth: 750 }} aria-label='simple table'>
 				<TableHead>
 					<TableRow>
-						<TableCell>Ticker</TableCell>
-						<TableCell>Logo</TableCell>
-						<TableCell align='right'>Exchange</TableCell>
-						<TableCell align='right'>Price</TableCell>
-						<TableCell align='right'>Change</TableCell>
-						<TableCell align='right'>Change&nbsp;percent</TableCell>
-						<TableCell align='right'>Dividend</TableCell>
-						<TableCell align='right'>Income</TableCell>
-						<TableCell align='right'>
-							Last&nbsp;trade&nbsp;time
-						</TableCell>
+						{tableHeadList.map((el: string, index: number) => (
+							<TableCell
+								align={index > 1 ? 'right' : 'center'}
+								key={el}
+								sx={{ whiteSpace: 'nowrap' }}
+							>
+								{el}
+							</TableCell>
+						))}
 					</TableRow>
 				</TableHead>
 				<TableBody>

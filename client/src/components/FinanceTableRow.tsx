@@ -5,22 +5,17 @@ import { format } from 'date-fns';
 
 import IListOfTickersItem from '../interfaces';
 import TableCellLogo from './TableCellLogo';
+import { checkProfit } from '../utils/checkProfit';
 
 export default function FinanceTableRow({
 	data,
 }: {
 	data: IListOfTickersItem;
 }) {
-	const {
-		ticker,
-		exchange,
-		price,
-		change,
-		change_percent,
-		dividend,
-		income,
-		last_trade_time,
-	} = data;
+	const { ticker, price, change, last_trade_time } = data;
+	const dataArray = Object.values(data);
+
+	const isProfit = checkProfit(price, change);
 
 	return (
 		<TableRow
@@ -30,19 +25,24 @@ export default function FinanceTableRow({
 				},
 			}}
 		>
-			<TableCell component='th' scope='row'>
-				{ticker}
-			</TableCell>
 			<TableCellLogo ticker={ticker} />
-			<TableCell align='right'>{exchange}</TableCell>
-			<TableCell align='right'>{price}</TableCell>
-			<TableCell align='right'>{change}</TableCell>
-			<TableCell align='right'>{change_percent}</TableCell>
-			<TableCell align='right'>{dividend}</TableCell>
-			<TableCell align='right'>{income}</TableCell>
-			<TableCell align='right'>
-				{format(new Date(last_trade_time), 'EEEE d/LLL/yyyy k:m')}
-			</TableCell>
+
+			{dataArray.length > 0 &&
+				dataArray.map((el: string | number, index: number) => (
+					<TableCell
+						align={index !== 0 ? 'right' : 'center'}
+						sx={{
+							whiteSpace: 'nowrap',
+						}}
+					>
+						{index === dataArray.length - 1
+							? format(
+									new Date(last_trade_time),
+									'EEEE d/LLL/yyyy k:m'
+							  )
+							: el}
+					</TableCell>
+				))}
 		</TableRow>
 	);
 }
