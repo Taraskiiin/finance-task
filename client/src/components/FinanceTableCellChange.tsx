@@ -13,12 +13,13 @@ export default function FinanceTableCellChange({
 	color,
 }: TFinanceTableCellChange) {
 	return (
-		<TableCell>
+		<TableCell align='right'>
 			<Box
 				sx={{
 					color: { color },
 					display: 'flex',
 					alignItems: 'center',
+					justifyContent: 'end',
 				}}
 			>
 				{icon}

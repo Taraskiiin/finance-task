@@ -61,11 +61,15 @@ export default function FinanceTableCell({
 
 	if (name === 'last_trade_time') {
 		return (
-			<TableCell>
+			<TableCell align='right'>
 				{format(new Date(info), 'EEEE d/LLL/yyyy k:m')}
 			</TableCell>
 		);
 	}
 
-	return <TableCell>{info}</TableCell>;
+	return (
+		<TableCell align={name === 'ticker' ? 'center' : 'right'}>
+			{info}
+		</TableCell>
+	);
 }
