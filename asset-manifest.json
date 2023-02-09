@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/finance-task/static/js/main.5eeb6304.js",
+    "main.js": "/finance-task/static/js/main.21b2f044.js",
     "static/js/787.c4e7f8f9.chunk.js": "/finance-task/static/js/787.c4e7f8f9.chunk.js",
     "index.html": "/finance-task/index.html",
-    "main.5eeb6304.js.map": "/finance-task/static/js/main.5eeb6304.js.map",
+    "main.21b2f044.js.map": "/finance-task/static/js/main.21b2f044.js.map",
     "787.c4e7f8f9.chunk.js.map": "/finance-task/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.5eeb6304.js"
+    "static/js/main.21b2f044.js"
   ]
 }
