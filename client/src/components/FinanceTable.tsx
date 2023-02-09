@@ -21,11 +21,14 @@ const tableHeadList = [
 	'Dividend',
 	'Income',
 	'Last trade time',
+	'Delete',
 ];
 
 export default function FinanceTable() {
 	const data = useAppSelector<IListOfTickersItem[]>((state) => state.list);
-
+	const listOfDelete = useAppSelector<string[]>(
+		(state) => state.listOfDeleted
+	);
 	return (
 		<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 750 }} aria-label='simple table'>
@@ -44,9 +47,13 @@ export default function FinanceTable() {
 				</TableHead>
 				<TableBody>
 					{data.length > 0 &&
-						data.map((el: IListOfTickersItem) => (
-							<FinanceTableRow data={el} key={el.ticker} />
-						))}
+						data
+							.filter((el: IListOfTickersItem) => {
+								return !listOfDelete.includes(el.ticker);
+							})
+							.map((el: IListOfTickersItem) => (
+								<FinanceTableRow data={el} key={el.ticker} />
+							))}
 				</TableBody>
 			</Table>
 		</TableContainer>

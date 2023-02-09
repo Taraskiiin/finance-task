@@ -1,5 +1,5 @@
-import { Box, TableCell } from '@mui/material';
 import React from 'react';
+import { Box, TableCell } from '@mui/material';
 
 type TFinanceTableCellChange = {
 	info: string | number;

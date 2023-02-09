@@ -4,10 +4,13 @@ import {
 	Action,
 	combineReducers,
 } from '@reduxjs/toolkit';
+
+import listOfDeletedSlice from './listOfDeletedSlice';
 import listSlice from './listSlice';
 
 const rootReducer = combineReducers({
 	list: listSlice.reducer,
+	listOfDeleted: listOfDeletedSlice.reducer,
 });
 
 export const store = configureStore({

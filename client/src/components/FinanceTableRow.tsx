@@ -1,20 +1,31 @@
 import React from 'react';
 import TableRow from '@mui/material/TableRow';
+import { TableCell } from '@mui/material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-import IListOfTickersItem from '../interfaces';
 import TableCellLogo from './TableCellLogo';
+import Btn from './Btn';
 import FinanceTableCell from './FinanceTableCell';
+
 import { checkProfit } from '../utils/checkProfit';
+import { useAppDispatch } from '../hooks/reduxHooks';
+import { addToDeletedList } from '../redux/listOfDeletedSlice';
+import IListOfTickersItem from '../interfaces';
 
 export default function FinanceTableRow({
 	data,
 }: {
 	data: IListOfTickersItem;
 }) {
+	const dispatch = useAppDispatch();
 	const { ticker, price, change } = data;
 
 	const arrayOfData = Object.entries(data);
 	const isProfit = checkProfit(price, change);
+
+	function handleDeleteRow(name: string) {
+		dispatch(addToDeletedList(name));
+	}
 
 	return (
 		<TableRow
@@ -27,7 +38,7 @@ export default function FinanceTableRow({
 			<TableCellLogo ticker={ticker} />
 
 			{arrayOfData.length > 0 &&
-				arrayOfData.map((el: any, index: number) => (
+				arrayOfData.map((el: string[]) => (
 					<FinanceTableCell
 						key={el[0]}
 						name={el[0]}
@@ -35,6 +46,13 @@ export default function FinanceTableRow({
 						isProfit={isProfit}
 					/>
 				))}
+			<TableCell align='right'>
+				<Btn
+					icon={<DeleteForeverIcon fontSize='large' />}
+					color={'red'}
+					click={() => handleDeleteRow(ticker)}
+				/>
+			</TableCell>
 		</TableRow>
 	);
 }
